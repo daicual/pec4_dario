@@ -7,6 +7,10 @@ import pandas as pd
 import os
 
 def main():
+    ###############
+    # Ejercicio 1 #
+    ###############
+
     df = load_dataset("data/quantitat-aigua.csv")
 
     print("Primeras 5 filas:")
@@ -17,6 +21,10 @@ def main():
 
     print("\nInfo:")
     print(df.info())
+
+    ###############
+    # Ejercicio 2 #
+    ###############
 
     df = rename_columns(df)
 
@@ -33,7 +41,9 @@ def main():
     print("\nDataFrame filtrado (La Baells):")
     print(df_baells.head())
 
-
+    ###############
+    # Ejercicio 3 #
+    ###############
 
     # Convertir columna dia a datetime
     df_baells["dia"] = pd.to_datetime(df_baells["dia"], dayfirst=True)
@@ -51,16 +61,22 @@ def main():
     # Crear carpeta img si no existe
     os.makedirs("img", exist_ok=True)
 
-
-
     # Generar y guardar la gráfica
     plot_volume(df_baells, "img/labaells_dario.png", nombre_autor="Darío Aícua")
     print("Gráfica guardada en img/labaells_dario.png")
+
+    ###############
+    # Ejercicio 4 #
+    ###############
 
     # Crear columna para el suavizado
     df_baells["nivell_suavitzat"] = apply_smoothing(df_baells["nivell_perc"])
     # Crear gráfica
     plot_smoothed(df_baells, "img/labaells_suavitzat_dario.png", nombre_autor="Darío Aícua")
+
+    ###############
+    # Ejercicio 5 #
+    ###############
 
     periodos_sequia = calcula_periodos(df_baells)
     print("Períodos de sequía detectados:")
