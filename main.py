@@ -1,7 +1,10 @@
 from baells.io_utils import load_dataset
-from baells.eda import rename_columns, clean_station_names, filter_baells
+from baells.eda import rename_columns, clean_station_names, filter_baells, calcula_periodos
 from baells.time_utils import to_year_fraction
+from baells.plots import plot_volume, plot_smoothed
+from baells.smooth import apply_smoothing
 import pandas as pd
+import os
 
 def main():
     df = load_dataset("data/quantitat-aigua.csv")
@@ -45,6 +48,24 @@ def main():
     print("\nPrimeras filas con fecha decimal:")
     print(df_baells[["dia", "dia_decimal"]].head(10))
 
+    # Crear carpeta img si no existe
+    os.makedirs("img", exist_ok=True)
+
+
+
+    # Generar y guardar la gráfica
+    plot_volume(df_baells, "img/labaells_dario.png", nombre_autor="Darío Aícua")
+    print("Gráfica guardada en img/labaells_dario.png")
+
+    # Crear columna para el suavizado
+    df_baells["nivell_suavitzat"] = apply_smoothing(df_baells["nivell_perc"])
+    # Crear gráfica
+    plot_smoothed(df_baells, "img/labaells_suavitzat_dario.png", nombre_autor="Darío Aícua")
+
+    periodos_sequia = calcula_periodos(df_baells)
+    print("Períodos de sequía detectados:")
+    for inicio, fin in periodos_sequia:
+        print(f"De {inicio} a {fin}")
 
 if __name__ == "__main__":
     main()

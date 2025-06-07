@@ -28,3 +28,26 @@ def filter_baells(df):
     Filtra los datos para quedarse solo con el embalse La Baells.
     """
     return df[df['estacio'].str.lower().str.contains("baells")].copy()
+
+def calcula_periodos(df, umbral=60):
+    """
+    Devuelve una lista de periodos donde la columna 'nivell_suavitzat' está por debajo del umbral.
+    Cada periodo es una lista [inicio, fin] en formato dia_decimal.
+    """
+    sequia = df["nivell_suavitzat"] < umbral
+    periodos = []
+    inicio = None
+
+    for i in range(len(df)):
+        if sequia.iloc[i] and inicio is None:
+            inicio = df["dia_decimal"].iloc[i]
+        elif not sequia.iloc[i] and inicio is not None:
+            fin = df["dia_decimal"].iloc[i - 1]
+            periodos.append([round(inicio, 2), round(fin, 2)])
+            inicio = None
+
+    # Si termina en sequía, cerramos el último periodo
+    if inicio is not None:
+        periodos.append([round(inicio, 2), round(df["dia_decimal"].iloc[-1], 2)])
+
+    return periodos
