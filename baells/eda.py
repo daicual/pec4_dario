@@ -29,7 +29,7 @@ def filter_baells(df):
     """
     return df[df['estacio'].str.lower().str.contains("baells")].copy()
 
-def calcula_periodos(df, umbral=60):
+def calcula_periodos_sequia(df, umbral=60):
     """
     Devuelve una lista de periodos donde la columna 'nivell_suavitzat' está por debajo del umbral.
     Cada periodo es una lista [inicio, fin] en formato dia_decimal.
