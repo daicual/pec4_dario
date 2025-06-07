@@ -37,3 +37,23 @@ Este proyecto resuelve la Práctica 4 de la asignatura **Programación para la C
 
     ```bash
     python main.py
+   
+## ⚙️ Opciones por línea de comandos
+
+Puedes ejecutar el script principal con distintas opciones:
+
+- Ejecutar todos los ejercicios:
+
+  ```bash
+  python main.py
+  
+- Ejecutar del ejercicio 1 hasta el ejercicio 3:
+
+  ```bash
+  python main.py -ex 3
+  
+- Mostrar ayuda:
+
+  ```bash
+  python main.py -h
+  
