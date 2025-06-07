@@ -1,5 +1,6 @@
-import re
-
+"""
+Módulo que para transformar y extraer datos del Dataset
+"""
 def rename_columns(df):
     """
     Renombra las columnas del DataFrame según el mapeo especificado.

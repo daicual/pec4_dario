@@ -1,3 +1,6 @@
+"""
+Módulo que contiene funciones para cargar el dataset
+"""
 import pandas as pd
 
 def load_dataset(filepath):

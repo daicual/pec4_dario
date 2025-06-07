@@ -1,3 +1,6 @@
+"""
+Módulo que contiene funciones para generar gráficos.
+"""
 import matplotlib.pyplot as plt
 
 def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
@@ -7,7 +10,8 @@ def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
     Args:
         df (pd.DataFrame): DataFrame con las columnas 'dia_decimal' y 'nivell_perc'.
         path_to_save (str): Ruta donde se guardará la imagen generada.
-        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico. Por defecto "Darío Aícua".
+        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico.
+                                      Por defecto "Darío Aícua".
 
     Returns:
         None
@@ -18,7 +22,8 @@ def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
     plt.xlabel("Any")
     plt.ylabel("Percentatge d’aigua (%)")
     plt.title("Evolució del percentatge d’aigua a La Baells", fontsize=14)
-    plt.text(0.5, -0.12, f"Autor: {nombre_autor}", ha='center', va='center', transform=plt.gca().transAxes, fontsize=10)
+    plt.text(0.5, -0.12, f"Autor: {nombre_autor}", ha='center', va='center',
+             transform=plt.gca().transAxes, fontsize=10)
 
     plt.grid(True)
     plt.tight_layout()
@@ -30,9 +35,11 @@ def plot_smoothed(df, path_to_save, nombre_autor="Darío Aícua"):
     Genera y guarda una gráfica comparativa entre la curva original y la suavizada.
 
     Args:
-        df (pd.DataFrame): DataFrame con columnas 'dia_decimal', 'nivell_perc' y 'nivell_suavitzat'.
+        df (pd.DataFrame): DataFrame con columnas 'dia_decimal',
+                            'nivell_perc' y 'nivell_suavitzat'.
         path_to_save (str): Ruta donde se guardará la imagen generada.
-        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico. Por defecto "Darío Aícua".
+        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico.
+                                    Por defecto "Darío Aícua".
 
     Returns:
         None

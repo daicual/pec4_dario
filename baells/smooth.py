@@ -1,3 +1,6 @@
+"""
+Módulo que contiene funciones para suavizado de series temporales.
+"""
 from scipy.signal import savgol_filter
 
 
@@ -9,9 +12,12 @@ def apply_smoothing(y, window_length=1500, polyorder=3):
 
     Args:
         y (array-like): Serie de valores numéricos (por ejemplo, porcentaje de agua).
-        window_length (int, optional): Tamaño de la ventana de suavizado. Debe ser un número impar mayor que `polyorder`.
-                                       Por defecto es 1500. Si se da un número par, se ajustará automáticamente.
-        polyorder (int, optional): Grado del polinomio que se ajusta a los puntos dentro de la ventana. Por defecto es 3.
+        window_length (int, optional): Tamaño de la ventana de suavizado.
+                                       Debe ser un número impar mayor que `polyorder`.
+                                       Por defecto es 1500. Si se da un número par,
+                                       se ajustará automáticamente.
+        polyorder (int, optional): Grado del polinomio que se ajusta
+                                   a los puntos dentro de la ventana. Por defecto es 3.
 
     Returns:
         np.ndarray: Serie suavizada con la misma longitud que `y`.

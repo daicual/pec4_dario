@@ -1,3 +1,6 @@
+"""
+Módulo que contiene funciones para transformar fechas.
+"""
 import datetime
 
 def to_year_fraction(date):
@@ -19,4 +22,5 @@ def to_year_fraction(date):
     year = date.year
     start = datetime.datetime(year, 1, 1)
     end = datetime.datetime(year + 1, 1, 1)
-    return year + ((since_epoch(date) - since_epoch(start)) / (since_epoch(end) - since_epoch(start)))
+    return year + ((since_epoch(date) - since_epoch(start))
+                   / (since_epoch(end) - since_epoch(start)))
