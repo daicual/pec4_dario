@@ -6,7 +6,7 @@ def rename_columns(df):
     """
     columnas = {
         'Dia': 'dia',
-        'Estació': 'estació',
+        'Estació': 'estacio',
         'Nivell absolut (msnm)': 'nivell_msnm',
         'Percentatge volum embassat (%)': 'nivell_perc',
         'Volum embassat (hm3)': 'volum'
