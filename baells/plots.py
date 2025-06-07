@@ -2,7 +2,15 @@ import matplotlib.pyplot as plt
 
 def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
     """
-    Genera y guarda la gráfica de evolución del porcentaje de agua.
+    Genera y guarda una gráfica de la evolución del porcentaje de agua embalsada.
+
+    Args:
+        df (pd.DataFrame): DataFrame con las columnas 'dia_decimal' y 'nivell_perc'.
+        path_to_save (str): Ruta donde se guardará la imagen generada.
+        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico. Por defecto "Darío Aícua".
+
+    Returns:
+        None
     """
     plt.figure(figsize=(10, 6))
     plt.plot(df["dia_decimal"], df["nivell_perc"], label="Volum d’aigua")
@@ -19,7 +27,15 @@ def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
 
 def plot_smoothed(df, path_to_save, nombre_autor="Darío Aícua"):
     """
-    Genera y guarda la gráfica con la curva original y la suavizada.
+    Genera y guarda una gráfica comparativa entre la curva original y la suavizada.
+
+    Args:
+        df (pd.DataFrame): DataFrame con columnas 'dia_decimal', 'nivell_perc' y 'nivell_suavitzat'.
+        path_to_save (str): Ruta donde se guardará la imagen generada.
+        nombre_autor (str, optional): Nombre del autor que aparece como pie de gráfico. Por defecto "Darío Aícua".
+
+    Returns:
+        None
     """
     plt.figure(figsize=(10, 6))
     plt.plot(df["dia_decimal"], df["nivell_perc"], label="Original", alpha=0.5)

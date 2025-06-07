@@ -2,7 +2,13 @@ import re
 
 def rename_columns(df):
     """
-    Renombra las columnas según el mapeo especificado en el enunciado.
+    Renombra las columnas del DataFrame según el mapeo especificado.
+
+    Args:
+        df (pd.DataFrame): DataFrame original con nombres de columnas en catalán.
+
+    Returns:
+        pd.DataFrame: DataFrame con columnas renombradas ('Dia' → 'dia', etc.).
     """
     columnas = {
         'Dia': 'dia',
@@ -16,8 +22,14 @@ def rename_columns(df):
 def clean_station_names(df):
     """
     Limpia los nombres de embalses:
-    - Elimina 'Embassament de '
-    - Elimina el texto entre paréntesis
+    - Elimina el prefijo 'Embassament de '
+    - Elimina el texto entre paréntesis (si existe)
+
+    Args:
+        df (pd.DataFrame): DataFrame que contiene la columna 'estacio'.
+
+    Returns:
+        pd.DataFrame: DataFrame con los nombres de estación limpiados.
     """
     df['estacio'] = df['estacio'].str.replace(r'Embassament de ', '', regex=True)
     df['estacio'] = df['estacio'].str.replace(r'\s*\(.*\)', '', regex=True)
@@ -25,14 +37,26 @@ def clean_station_names(df):
 
 def filter_baells(df):
     """
-    Filtra los datos para quedarse solo con el embalse La Baells.
+    Filtra el DataFrame para quedarse únicamente con los registros del embalse de La Baells.
+
+    Args:
+        df (pd.DataFrame): DataFrame con múltiples embalses.
+
+    Returns:
+        pd.DataFrame: DataFrame filtrado con solo los datos de La Baells.
     """
     return df[df['estacio'].str.lower().str.contains("baells")].copy()
 
 def calcula_periodos_sequia(df, umbral=60):
     """
-    Devuelve una lista de periodos donde la columna 'nivell_suavitzat' está por debajo del umbral.
-    Cada periodo es una lista [inicio, fin] en formato dia_decimal.
+    Detecta los periodos en los que el valor de 'nivell_suavitzat' está por debajo de un umbral.
+
+    Args:
+        df (pd.DataFrame): DataFrame con columnas 'nivell_suavitzat' y 'dia_decimal'.
+        umbral (float, optional): Umbral de sequía. Por defecto 60.
+
+    Returns:
+        list: Lista de periodos de sequía, cada uno como [inicio, fin] en formato decimal.
     """
     sequia = df["nivell_suavitzat"] < umbral
     periodos = []
