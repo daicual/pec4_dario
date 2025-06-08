@@ -155,6 +155,16 @@ Distribuido bajo la **Licencia MIT**. Ver fichero [LICENSE](LICENSE).
 
 ---
 
+## Actualizar los requisitos (opcional para desarrollo)
+
+Si se instalan nuevas dependencias durante el desarrollo o se actualizan versiones, se puede regenerar el archivo `requirements.txt` con:
+
+```bash
+pip freeze > requirements.txt
+```
+
+---
+
 ## Autor
 
 Darío Aícua Ubierna  
