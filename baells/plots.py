@@ -19,9 +19,9 @@ def plot_volume(df, path_to_save, nombre_autor="Darío Aícua"):
     plt.figure(figsize=(10, 6))
     plt.plot(df["dia_decimal"], df["nivell_perc"], label="Volum d’aigua")
 
-    plt.xlabel("Any")
-    plt.ylabel("Percentatge d’aigua (%)")
-    plt.title("Evolució del percentatge d’aigua a La Baells", fontsize=14)
+    plt.xlabel("Año")
+    plt.ylabel("Porcentaje de agua (%)")
+    plt.title("Evolución del porcentaje de agua en La Baells", fontsize=14)
     plt.text(0.5, -0.12, f"Autor: {nombre_autor}", ha='center', va='center',
              transform=plt.gca().transAxes, fontsize=10)
 
@@ -46,11 +46,11 @@ def plot_smoothed(df, path_to_save, nombre_autor="Darío Aícua"):
     """
     plt.figure(figsize=(10, 6))
     plt.plot(df["dia_decimal"], df["nivell_perc"], label="Original", alpha=0.5)
-    plt.plot(df["dia_decimal"], df["nivell_suavitzat"], label="Suavitzat", linewidth=2)
+    plt.plot(df["dia_decimal"], df["nivell_suavitzat"], label="Suavizado", linewidth=2)
 
-    plt.xlabel("Any")
-    plt.ylabel("Percentatge d’aigua (%)")
-    plt.title("Evolució del percentatge d’aigua a La Baells (suavitzada)", fontsize=14)
+    plt.xlabel("Año")
+    plt.ylabel("Porcentaje de agua (%)")
+    plt.title("Evolución del porcentaje de agua en La Baells (suavizado)", fontsize=14)
     plt.text(0.5, -0.12, f"Autor: {nombre_autor}", ha='center', va='center',
              transform=plt.gca().transAxes, fontsize=10)
 

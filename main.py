@@ -92,8 +92,8 @@ def main():
         # Creamos columna para el suavizado
         df_baells["nivell_suavitzat"] = apply_smoothing(df_baells["nivell_perc"])
         # Generamos y guardamos la gráfica con el suavizado
-        plot_smoothed(df_baells, "img/labaells_suavitzat_dario.png", nombre_autor="Darío Aícua")
-        print("Gráfico suavizado guardado en img/labaells_suavitzat_dario.png")
+        plot_smoothed(df_baells, "img/labaells_suavizado_dario.png", nombre_autor="Darío Aícua")
+        print("Gráfico suavizado guardado en img/labaells_suavizado_dario.png")
 
     if ejercicio_max >= 5:
         print("\n--- Ejercicio 5: Detección de periodos de sequía ---")
